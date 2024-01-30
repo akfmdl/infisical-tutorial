@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-deployment
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: flask
+  annotations:
+    secrets.infisical.com/auto-reload: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask
+  template:
+    metadata:
+      labels:
+        app: flask
+    spec:
+      containers:
+      - name: flask
+        image: aimmo.azurecr.io/ailab-models/flask:f69db1e50fb81610dd6b957c710bded8ecf993ae
+        envFrom:
+        - secretRef:
+            name: {{ .Values.secret.managedSecretName }}
+        ports:
+        - containerPort: 5000
+      imagePullSecrets:
+      - name: {{ .Values.imagePullSecret }}

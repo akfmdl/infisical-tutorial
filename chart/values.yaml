@@ -1,0 +1,17 @@
+namespace: infisical-example
+imagePullSecret: azure-registry
+secret:
+  # The Infisical host api url
+  hostAPI: https://app.infisical.com/api
+  # Name of this Managed Secret
+  managedSecretName: infisical-managed-secret-example
+  # Namespace of this Managed Secret
+  managedSecretNamespace: infisical-example
+serviceToken:
+  name: infisical-service-token
+  # The Infisical environment to pull secrets from
+  envSlug: dev
+  # The path to the secrets in the Infisical environment
+  secretsPath: /
+  # Service token secret
+  secret: <Infisical Service Token>

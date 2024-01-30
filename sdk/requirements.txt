@@ -1,0 +1,2 @@
+infisical==1.6.0
+flask==3.0.1
