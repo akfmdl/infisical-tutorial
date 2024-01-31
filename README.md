@@ -10,5 +10,5 @@ The tutorial explains how to use the Infisical SDK/CLI/Kubernetes Operator.
 Install requirements.txt in your local environment.
 
 ```bash
-pip install -r requirements.txt
+pip install -r sdk/requirements.txt
 ```
