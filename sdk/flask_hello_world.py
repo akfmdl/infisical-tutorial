@@ -6,6 +6,8 @@ then run:
 python sdk/flask_hello_world.py
 """
 import os
+import time
+
 from flask import Flask
 from infisical import InfisicalClient
 
@@ -19,8 +21,9 @@ client = InfisicalClient(site_url=INFISICAL_API_URL, token=INFISICAL_TOKEN)
 
 @app.route("/")
 def hello_world():
+    start = time.time()
     name = client.get_secret(secret_name="NAME", environment="dev", type="shared")
-    return f"Hello! My name is: {name.secret_value}"
+    return f"Hello! My name is: {name.secret_value}, time: {round(time.time() - start, 2)}"
 
 
 if __name__ == "__main__":
